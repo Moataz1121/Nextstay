@@ -11,7 +11,7 @@ class UpdateHotelRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -23,6 +23,11 @@ class UpdateHotelRequest extends FormRequest
     {
         return [
             //
+            'name' => 'required|max:50',
+            'city_id' => 'required|exists:cities,id',
+            'address' => 'required',
+            'images' => 'nullable|array|min:1',  // Allow the array but make it optional
+            'images.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ];
     }
 }

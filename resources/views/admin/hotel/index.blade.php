@@ -53,6 +53,10 @@
     </tbody>
 
 </table>
+<div class="d-flex justify-content-center">
+    {{-- {{ $hotels->links() }} --}}
+    {{ $hotels->links('pagination::bootstrap-4') }}
+</div>
 </div>
 <script>
     // Check if success message exists

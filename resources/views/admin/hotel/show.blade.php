@@ -16,7 +16,6 @@
             <div class="row">
                 @foreach ($images as $image)
                     <div class="col-md-3 mb-3">
-                        @dump($image->getUrl())
                         <img src="{{ $image->getUrl() }}" alt="Hotel Image" class="img-fluid">
                     </div>
                 @endforeach

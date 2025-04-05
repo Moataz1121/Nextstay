@@ -15,7 +15,7 @@ class HotelController extends Controller
     public function index()
     {
         //
-        $hotels = Hotel::all();
+        $hotels = Hotel::paginate(10);
         return view('admin.hotel.index' , compact('hotels'));
     }
 
@@ -65,6 +65,9 @@ class HotelController extends Controller
     public function edit(Hotel $hotel)
     {
         //
+        $hotel = Hotel::with('media')->find($hotel->id);
+        $cities = City::all();
+        return view('admin.hotel.edit' , compact('hotel' , 'cities'));
     }
 
     /**
@@ -73,6 +76,15 @@ class HotelController extends Controller
     public function update(UpdateHotelRequest $request, Hotel $hotel)
     {
         //
+        $data = $request->validated();
+        $hotel->update($data);
+        if ($request->hasFile('images')) {
+            foreach ($request->file('images') as $image) {
+                $hotel->clearMediaCollection('hotel_images');
+                $hotel->addMedia($image)->toMediaCollection('hotel_images');
+            }
+        }
+        return redirect()->route('admin.hotel.index')->with('success', 'Hotel Updated Successfully');
     }
 
     /**
@@ -81,5 +93,8 @@ class HotelController extends Controller
     public function destroy(Hotel $hotel)
     {
         //
+        $hotel->clearMediaCollection(); // This will delete all media associated with the hotel
+        $hotel->delete();
+        return redirect()->route('admin.hotel.index')->with('success', 'Hotel Deleted Successfully');
     }
 }
