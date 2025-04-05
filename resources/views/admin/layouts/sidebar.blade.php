@@ -31,5 +31,12 @@
         </a>
       </li>
 
+      <li class="menu-item @yield('hotels') ">
+        <a href="{{route('admin.hotel.index')}}" class="menu-link">
+          <i class="menu-icon tf-icons bx bx-home-circle"></i>
+          <div data-i18n="Analytics">Hotels</div>
+        </a>
+      </li>
+
     </ul>
   </aside>

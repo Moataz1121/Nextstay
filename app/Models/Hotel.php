@@ -1,0 +1,28 @@
+<?php
+
+namespace App\Models;
+
+use Illuminate\Console\Concerns\InteractsWithIO;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+use Spatie\MediaLibrary\HasMedia;
+use Spatie\MediaLibrary\InteractsWithMedia;
+
+class Hotel extends Model implements HasMedia
+{
+    /** @use HasFactory<\Database\Factories\HotelFactory> */
+    use HasFactory , InteractsWithMedia;
+
+    protected $fillable = [
+        'name' , 'city_id' , 'address'
+    ];
+
+    public function city()
+    {
+        return $this->belongsTo(City::class);
+    }
+    public function registerMediaCollections(): void
+    {
+        $this->addMediaCollection('hotel_images');
+    }
+}
