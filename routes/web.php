@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\HomeController;
+use App\Http\Controllers\AmenitiesController;
 use App\Http\Controllers\CityController;
 use App\Http\Controllers\HotelController;
 use App\Http\Controllers\ProfileController;
@@ -30,6 +31,7 @@ Route::resource('/city' , CityController::class);
 Route::resource ('/hotel' , HotelController::class);
 Route::resource('/roomtype' , RoomTypeController::class);
 Route::resource('/room' , RoomController::class);
+Route::resource('/amenities' , AmenitiesController::class);
 });
 
 require __DIR__.'/auth.php';

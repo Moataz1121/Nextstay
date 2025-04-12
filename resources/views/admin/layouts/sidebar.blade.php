@@ -52,5 +52,12 @@
         </a>
       </li>
 
+      <li class="menu-item @yield('amenities') ">
+        <a href="{{route('admin.amenities.index')}}" class="menu-link">
+          <i class="menu-icon tf-icons bx bx-home-circle"></i>
+          <div data-i18n="Analytics">Amenities</div>
+        </a>
+      </li>
+
     </ul>
   </aside>
