@@ -11,7 +11,7 @@ class StoreRoomRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -23,6 +23,12 @@ class StoreRoomRequest extends FormRequest
     {
         return [
             //
+            'room_number' => 'required',
+            'room_type_id' => 'required|exists:room_types,id',
+            'price' => 'required|numeric',
+            'status' => 'required',
+            'images' => 'required|array|min:1', // Ensure that at least one image is uploaded
+            'images.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048', // V
         ];
     }
 }

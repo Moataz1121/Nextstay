@@ -11,7 +11,7 @@ class UpdateRoomRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -23,6 +23,12 @@ class UpdateRoomRequest extends FormRequest
     {
         return [
             //
+            'room_number' => 'sometimes',
+            'room_type_id' => 'sometimes|exists:room_types,id',
+            'price' => 'sometimes|numeric',
+            'status' => 'sometimes',
+            'images' => 'sometimes|array|min:1', // Ensure that at least one image is uploaded
+            'images.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048', // V
         ];
     }
 }
