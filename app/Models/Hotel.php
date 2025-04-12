@@ -21,6 +21,10 @@ class Hotel extends Model implements HasMedia
     {
         return $this->belongsTo(City::class);
     }
+    public function roomTypes()
+    {
+        return $this->hasMany(RoomType::class); // A Hotel can have many RoomTypes
+    }
     public function registerMediaCollections(): void
     {
         $this->addMediaCollection('hotel_images');
