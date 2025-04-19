@@ -34,4 +34,8 @@ Route::resource('/room' , RoomController::class);
 Route::resource('/amenities' , AmenitiesController::class);
 });
 
+Route::get('/index' , function(){
+    return view('user.search-result-alex');
+});
+
 require __DIR__.'/auth.php';
