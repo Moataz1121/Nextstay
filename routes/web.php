@@ -25,7 +25,7 @@ Route::middleware('auth')->group(function () {
 
 
 
-Route::prefix('admin')->name('admin.')->group(function () {
+Route::middleware(['auth','checkUserType'])->prefix('admin')->name('admin.')->group(function () {
 Route::get('/index' , [HomeController::class , 'index'])->name('index');
 Route::resource('/city' , CityController::class);
 Route::resource ('/hotel' , HotelController::class);
