@@ -5,67 +5,68 @@
     <div class="container">
       <div class="cs_main_header_in">
         <div class="cs_main_header_left">
-          <a class="cs_site_branding" href="index.php">
-            <img src="assets/img/logo-black.svg" alt="Logo">
+          <a class="cs_site_branding" href="{{ route('index') }}">
+            <img src=" {{ asset('assets/img/logo-black.svg') }} " alt="Logo">
           </a>
         </div>
         <div class="cs_main_header_center">
           <div class="cs_nav cs_fs_13 cs_semibold">
             <ul class="cs_nav_list">
               <li class="menu-item-has-children cs_mega_menu">
-                <a href="index.php">Home</a>
-                <ul class="cs_mega_wrapper cs_with_thumb">
-                  <li>
-                    <a href="index.php">
-                      <img src="assets/img/demo/home-1.jpeg" alt="">Default Hotel & Resort
-                    </a>
-                  </li>
-                  <li>
-                    <a href="home-v2.php">
-                      <img src="assets/img/demo/home-2.jpeg" alt="">Hotel & Resort V2
-                    </a>
-                  </li>
-                  <li>
-                    <a href="home-v3.php">
-                      <img src="assets/img/demo/home-3.jpeg" alt="">Hotel & Resort V3
-                    </a>
-                  </li>
-                  <li>
-                    <a href="home-v4.php">
-                      <img src="assets/img/demo/home-4.jpeg" alt="">Hotel & Resort V4
-                    </a>
-                  </li>
-                  <li>
-                    <a href="home-v5.php">
-                      <img src="assets/img/demo/home-5.jpeg" alt="">Hotel & Resort V5
-                    </a>
-                  </li>
-                  <li>
-                    <a href="home-v6.php">
-                      <img src="assets/img/demo/home-6.jpeg" alt="">Hotel & Resort V6
-                    </a>
-                  </li>
-                  <li>
-                    <a href="home-v7.php">
-                      <img src="assets/img/demo/home-7.jpeg" alt="">Hotel & Resort V7
-                    </a>
-                  </li>
-                  <li>
-                    <a href="home-v8.php">
-                      <img src="assets/img/demo/home-8.jpeg" alt="">Hotel & Resort V8
-                    </a>
-                  </li>
-                  <li>
-                    <a href="home-v9.php">
-                      <img src="assets/img/demo/home-9.jpeg" alt="">Hostel
-                    </a>
-                  </li>
-                  <li>
-                    <a href="home-v10.php">
-                      <img src="assets/img/demo/home-10.jpeg" alt="">Luxury Hotel
-                    </a>
-                  </li>
-                </ul>
+                <a href="{{ route('index') }}">Home</a>
+                  <ul class="cs_mega_wrapper cs_with_thumb">
+                      <li>
+                          <a href="{{ route('index') }}">
+                              <img src="{{ asset('assets/img/demo/home-1.jpeg') }}" alt="">Default Hotel & Resort
+                          </a>
+                      </li>
+                      <li>
+                          <a href="{{ route('index') }}">
+                              <img src="{{ asset('assets/img/demo/home-2.jpeg') }}" alt="">Hotel & Resort V2
+                          </a>
+                      </li>
+                      <li>
+                          <a href="{{ route('index') }}">
+                              <img src="{{ asset('assets/img/demo/home-3.jpeg') }}" alt="">Hotel & Resort V3
+                          </a>
+                      </li>
+                      <li>
+                          <a href="{{ route('index') }}">
+                              <img src="{{ asset('assets/img/demo/home-4.jpeg') }}" alt="">Hotel & Resort V4
+                          </a>
+                      </li>
+                      <li>
+                          <a href="{{ route('index') }}">
+                              <img src="{{ asset('assets/img/demo/home-5.jpeg') }}" alt="">Hotel & Resort V5
+                          </a>
+                      </li>
+                      <li>
+                          <a href="{{ route('index') }}">
+                              <img src="{{ asset('assets/img/demo/home-6.jpeg') }}" alt="">Hotel & Resort V6
+                          </a>
+                      </li>
+                      <li>
+                          <a href="{{ route('index') }}">
+                              <img src="{{ asset('assets/img/demo/home-7.jpeg') }}" alt="">Hotel & Resort V7
+                          </a>
+                      </li>
+                      <li>
+                          <a href="{{ route('index') }}">
+                              <img src="{{ asset('assets/img/demo/home-8.jpeg') }}" alt="">Hotel & Resort V8
+                          </a>
+                      </li>
+                      <li>
+                          <a href="{{ route('index') }}">
+                              <img src="{{ asset('assets/img/demo/home-9.jpeg') }}" alt="">Hostel
+                          </a>
+                      </li>
+                      <li>
+                          <a href="{{ route('index') }}">
+                              <img src="{{ asset('assets/img/demo/home-10.jpeg') }}" alt="">Luxury Hotel
+                          </a>
+                      </li>
+                  </ul>
+
               </li>
               <li><a href="about.php">About Us</a></li>
               <li class="menu-item-has-children">
@@ -139,15 +140,24 @@
             <p class="mb-0">Reach out to us via phone, email, or through our convenient online form.  We look forward to hearing from you and helping you plan your  unforgettable experience at Seapearl Resort.</p>
           </div>
           <div class="cs_height_37 cs_height_lg_37"></div>
-          <form action="#" class="cs_form cs_style_2">
+          <form action="{{ route('contact.store') }}" method="POST" class="cs_form cs_style_2">
+              @if(session('success'))
+                  <div class="alert alert-success alert-dismissible fade show" role="alert">
+                      <i class="fa fa-check-circle me-2"></i>
+                      {{ session('success') }}
+                      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                  </div>
+              @endif
+
+              @csrf
             <label>Full Name*</label>
-            <input type="text" class="cs_form_field_2 cs_radius_20">
+            <input type="text" name="name" class="cs_form_field_2 cs_radius_20">
             <div class="cs_height_16 cs_height_lg_16"></div>
             <label>Email*</label>
-            <input type="text" class="cs_form_field_2 cs_radius_20">
+            <input type="email" name="email" class="cs_form_field_2 cs_radius_20">
             <div class="cs_height_16 cs_height_lg_16"></div>
             <label>Write Your Comment*</label>
-            <textarea cols="30" rows="6" class="cs_form_field_2 cs_radius_20"></textarea>
+            <textarea name="message" cols="30" rows="6" class="cs_form_field_2 cs_radius_20"></textarea>
             <div class="cs_height_25 cs_height_lg_25"></div>
             <button class="cs_btn cs_style_2 cs_accent_btn cs_medium cs_radius_20 cs_fs_15">
               <b>Send Message</b>
@@ -169,7 +179,7 @@
       </div>
       <div class="col-lg-6">
         <div class="cs_image_layer cs_style_3 position-relative">
-          <img src="assets/img/C Suites Hotel _ Apartment interior _ Hotel and leisure photography.jpg" alt="Contact" class="cs_radius_5">
+          <img src= " {{ asset('assets/img/C Suites Hotel _ Apartment interior _ Hotel and leisure photography.jpg') }}" alt="Contact" class="cs_radius_5">
         </div>
       </div>
     </div>

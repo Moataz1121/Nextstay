@@ -15,7 +15,19 @@
             </div>
    <div class="cs_height_37 cs_height_lg_37"></div>
    <div class="cs_height_37 cs_height_lg_37"></div>
-<form action="Index.php" method="POST" class="cs_form cs_style_2" onsubmit="return validateLoginForm()">
+
+              @if ($errors->any())
+                  <div class="text-red-500">
+                      <ul>
+                          @foreach ($errors->all() as $error)
+                              <li>{{ $error }}</li>
+                          @endforeach
+                      </ul>
+                  </div>
+              @endif
+
+<form action="{{ route('login') }}" method="POST" class="cs_form cs_style_2" onsubmit="return validateLoginForm()">
+    @csrf
   <label>Email*</label>
   <input type="email" name="email" id="email" class="cs_form_field_2 cs_radius_20" required>
   <small id="emailError" style="color: red;"></small>

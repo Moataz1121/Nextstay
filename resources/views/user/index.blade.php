@@ -7,23 +7,25 @@
       <div class="container">
         <div class="cs_main_header_in">
           <div class="cs_main_header_left">
-            <a class="cs_site_branding" href="index.php">
-              <img src="assetassetss/img/logo_next_stay.png" alt="Logo">
+            <a class="cs_site_branding" href="{{ route('index') }}">
+                <img src="{{ asset('assets/img/logo_next_stay.png') }}" alt="Logo">
             </a>
           </div>
           <div class="cs_main_header_center">
             <nav class="cs_nav cs_fs_13 cs_semibold">
               <ul class="cs_nav_list">
-              <li><a href="Index.php">Home</a></li>
+              <li><a href="{{ route('index') }}">Home</a></li>
               <li><a href="Index.php">About Us</a></li>
-              <li><a href="gallery.php">Popular Destinations</a></li>
-              <!-- <li><a href="search-result.php">Search</a></li> -->
+              <li><a href="{{ url('gallery') }}">Popular Destinations</a></li>
+              <li><a href="{{ route('contact') }}">Contact Us</a></li> <br>
+
+                  <!-- <li><a href="search-result.php">Search</a></li> -->
 
               </ul>
             </nav>
           </div>
           <div class="cs_main_header_right">
-            <a href="Register.php" class="cs_btn cs_style_2 cs_medium cs_radius_20 cs_fs_15">
+            <a href="{{ route('register') }}" class="cs_btn cs_style_2 cs_medium cs_radius_20 cs_fs_15">
               Register
             </a>
 
@@ -84,7 +86,7 @@
         </div>
       </div>
     </div>
-    <div class="cs_half_ternary_bg position-relative">
+      <div class="cs_half_ternary_bg position-relative">
       <div class="container">
         <form action="search-result.php" class="cs_form cs_style_4 cs_accent_bg cs_radius_5 position-relative cs_zindex_10">
           <div class="cs_date_items">
@@ -192,6 +194,7 @@ document.getElementById("citySelect").addEventListener("change", function() {
   <!-- End About Section -->
 
   <!-- Start Rooms Section -->
+
   <section>
     <div class="cs_height_141 cs_height_lg_75"></div>
     <div class="container">
@@ -199,109 +202,94 @@ document.getElementById("citySelect").addEventListener("change", function() {
         <p class="cs_section_subtitle cs_medium cs_letter_spacing_1 cs_mb_28 cs_mb_lg_15 text-uppercase">Hotels</p>
         <h2 class="cs_fs_67 mb-0 wow fadeInUp" data-wow-duration="0.8s" data-wow-delay="0.2s">Most Popular Hotels</h2>
       </div>
+
+        <style>
+            .filter-form {
+                display: flex;
+                align-items: center;
+                gap: 15px;
+                margin: 20px 0;
+                flex-wrap: wrap;
+            }
+
+            .filter-form label {
+                font-weight: bold;
+                color: #333;
+            }
+
+            .filter-form input {
+                padding: 8px 10px;
+                border: 1px solid #ccc;
+                border-radius: 8px;
+                min-width: 120px;
+            }
+
+            .filter-form button {
+                padding: 10px 20px;
+                background-color: #3498db;
+                color: #fff;
+                border: none;
+                border-radius: 8px;
+                cursor: pointer;
+                transition: background-color 0.3s ease;
+            }
+
+            .filter-form button:hover {
+                background-color: #2980b9;
+            }
+        </style>
+
+        <div style="display: flex; justify-content: flex-end;">
+            <br><form method="GET" action="{{ route('index') }}" class="filter-form">
+                <label for="price_from">Price From:</label>
+                <input type="number" id="price_from" name="price_from" min="0" placeholder="مثلا 100">
+
+                <label for="price_to">Price To:</label>
+                <input type="number" id="price_to" name="price_to" min="0" placeholder="مثلا 500">
+
+                <button type="submit" style="display: flex; justify-content: flex-start;">Search</button>
+            </form>
+
+        </div>
+
       <div class="cs_height_80 cs_height_lg_50"></div>
     </div>
     <div class="container-fluid">
       <div class="cs_slider cs_style_1 cs_slider_gap_40 cs_hover_show_arrows">
-        <div class="cs_slider_container" data-autoplay="0" data-loop="1" data-speed="600" data-center="0" data-variable-width="0" data-slides-per-view="responsive" data-xs-slides="1" data-sm-slides="2" data-md-slides="2" data-lg-slides="3" data-add-slides="3">
-          <div class="cs_slider_wrapper">
-            <div class="cs_slide">
-              <div class="cs_card cs_style_1">
-                <a href="popular-dahab.php" class="cs_card_thumb d-block cs_radius_5 overflow-hidden position-relative cs_primary_bg">
-                  <img src="assets/img/home_hotel_1.jpg" alt="Room">
-                  <img src="assets/img/home_hotel_1.jpg" alt="Room">
-                </a>
-                <div class="cs_card_info position-relative">
-                  <h2 class="cs_card_title cs_fs_50 cs_mb_4"><a href="popular-dahab.php">Dahab Hotel</a></h2>
-                  <div class="cs_card_price cs_mb_17">
-                    <span class="cs_primary_color">From</span>
-                    <span class="cs_accent_color cs_fs_38 cs_primary_font">EGP 3200/Night</span>
-                  </div>
-                  </a>
+          <div class="cs_slider_container" data-autoplay="0" data-loop="1" data-speed="600" data-center="0" data-variable-width="0" data-slides-per-view="responsive" data-xs-slides="1" data-sm-slides="2" data-md-slides="2" data-lg-slides="3" data-add-slides="3">
+
+            {{--            here      --}}
+
+
+            <div class="col-lg-8">
+                <div class="row cs_gap_y_60">
+                    @foreach($hotels as $hotel)
+                        <div class="col-xl-6 col-lg-12 col-md-6">
+                            <div class="cs_card cs_style_7 cs_radius_5 overflow-hidden">
+                                <a href="{{ route('details.hotel', $hotel->id) }}" class="cs_card_thumb d-block overflow-hidden position-relative cs_primary_bg">
+                                    <img src="{{ $hotel->getFirstMediaUrl('hotel_images') }}" alt="Room">
+                                    <span class="cs_card_btn position-absolute cs_zindex_2">
+              <span class="cs_btn cs_style_2 cs_accent_btn cs_medium cs_radius_5 cs_fs_15">
+                <b>Details View</b>
+              </span>
+            </span>
+                                </a>
+                                <div class="cs_card_info position-relative">
+                                    <h2 class="cs_card_title cs_fs_50 cs_mb_4">
+                                        <a href="{{ route('details.hotel', $hotel->id) }}">{{ $hotel->name }}</a>
+                                    </h2>
+                                    @foreach($hotel->roomTypes as $type)
+                                        <div class="cs_card_price cs_mb_17">
+                                            <span class="cs_primary_color">From</span>
+                                            <span class="cs_accent_color cs_fs_38 cs_primary_font">EGP {{ $type->price ?? '' }}/Night</span>
+                                        </div>
+                                    @endforeach
+                                </div>
+                            </div>
+                        </div>
+                    @endforeach
                 </div>
-              </div>
             </div>
-            <div class="cs_slide">
-              <div class="cs_card cs_style_1">
-                <a href="popular-Aswan.php" class="cs_card_thumb d-block cs_radius_5 overflow-hidden position-relative cs_primary_bg">
-                  <img src="assets/img/home_hotel_2.jpeg" alt="Room">
-                  <img src="assets/img/home_hotel_2.jpeg" alt="Room">
-                </a>
-                <div class="cs_card_info position-relative">
-                  <h2 class="cs_card_title cs_fs_50 cs_mb_4"><a href="popular-Aswan.php">Aswan Hotel</a></h2>
-                  <div class="cs_card_price cs_mb_17">
-                    <span class="cs_primary_color">From</span>
-                    <span class="cs_accent_color cs_fs_38 cs_primary_font">EGP 2450/Night</span>
-                  </div>
-                  </a>
-                </div>
-              </div>
-            </div>
-            <div class="cs_slide">
-              <div class="cs_card cs_style_1">
-                <a href="popular-cairo.php" class="cs_card_thumb d-block cs_radius_5 overflow-hidden position-relative cs_primary_bg">
-                  <img src="assets/img/home_hotel_3.jpg" alt="Room">
-                  <img src="assets/img/home_hotel_3.jpg" alt="Room">
-                </a>
-                <div class="cs_card_info position-relative">
-                  <h2 class="cs_card_title cs_fs_50 cs_mb_4"><a href="popular-cairo.php">Cairo hotel</a></h2>
-                  <div class="cs_card_price cs_mb_17">
-                    <span class="cs_primary_color">From</span>
-                    <span class="cs_accent_color cs_fs_38 cs_primary_font">EGP 5200/Night</span>
-                  </div>
-                  </a>
-                </div>
-              </div>
-            </div>
-            <div class="cs_slide">
-              <div class="cs_card cs_style_1">
-                <a href="popular-luxor.php" class="cs_card_thumb d-block cs_radius_5 overflow-hidden position-relative cs_primary_bg">
-                  <img src="assets/img/home_hotel_4.jpg" alt="Room">
-                  <img src="assets/img/home_hotel_4.jpg" alt="Room">
-                </a>
-                <div class="cs_card_info position-relative">
-                  <h2 class="cs_card_title cs_fs_50 cs_mb_4"><a href="popular-luxor.php">Luxor hotel</a></h2>
-                  <div class="cs_card_price cs_mb_17">
-                    <span class="cs_primary_color">From</span>
-                    <span class="cs_accent_color cs_fs_38 cs_primary_font">EGP 3200/Night</span>
-                  </div>
-                  </a>
-                </div>
-              </div>
-            </div>
-            <div class="cs_slide">
-              <div class="cs_card cs_style_1">
-                <a href="popular-hurghada.php" class="cs_card_thumb d-block cs_radius_5 overflow-hidden position-relative cs_primary_bg">
-                  <img src="assets/img/home_hotel_5.jpg" alt="Room">
-                  <img src="assets/img/home_hotel_5.jpg" alt="Room">
-                </a>
-                <div class="cs_card_info position-relative">
-                  <h2 class="cs_card_title cs_fs_50 cs_mb_4"><a href="popular-hurghada.php">Hurghada hotel</a></h2>
-                  <div class="cs_card_price cs_mb_17">
-                    <span class="cs_primary_color">From</span>
-                    <span class="cs_accent_color cs_fs_38 cs_primary_font">EGP 4500/Night</span>
-                  </div>
-                  </a>
-                </div>
-              </div>
-            </div>
-            <div class="cs_slide">
-              <div class="cs_card cs_style_1">
-                <a href="popular-alex.php" class="cs_card_thumb d-block cs_radius_5 overflow-hidden position-relative cs_primary_bg">
-                  <img src="assets/img/home_hotel_6.jpg" alt="Room">
-                  <img src="assets/img/home_hotel_6.jpg" alt="Room">
-                </a>
-                <div class="cs_card_info position-relative">
-                  <h2 class="cs_card_title cs_fs_50 cs_mb_4"><a href="popular-alex.php">Alexandria Hotel<a></h2>
-                  <div class="cs_card_price cs_mb_17">
-                    <span class="cs_primary_color">From</span>
-                    <span class="cs_accent_color cs_fs_38 cs_primary_font">EGP 1020/Night</span>
-                  </div>
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
         </div>
         <div class="cs_slider_arrows cs_style_1 cs_mobile_hide">
           <div class="cs_left_arrow cs_center cs_primary_color">

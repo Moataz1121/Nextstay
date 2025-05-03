@@ -14,9 +14,21 @@
               <!-- <p class="mb-0">Reach out to us via phone, email, or through our convenient online form.  We look forward to hearing from you and helping you plan your  unforgettable experience at Seapearl Resort.</p> -->
             </div>
    <div class="cs_height_37 cs_height_lg_37"></div>
-<form action="login.php" method="POST" class="cs_form cs_style_2" onsubmit="return validateForm()">
+
+              @if ($errors->any())
+                  <div class="text-red-500">
+                      <ul>
+                          @foreach ($errors->all() as $error)
+                              <li>{{ $error }}</li>
+                          @endforeach
+                      </ul>
+                  </div>
+              @endif
+
+              <form action="{{ route('register') }}" method="POST" class="cs_form cs_style_2" onsubmit="return validateForm()">
+    @csrf
   <label>Username*</label>
-  <input type="text" name="username" class="cs_form_field_2 cs_radius_20" required>
+  <input type="text" name="name" class="cs_form_field_2 cs_radius_20" required>
 
   <div class="cs_height_16 cs_height_lg_16"></div>
   <label>Email*</label>
@@ -33,7 +45,7 @@
   <div class="cs_height_25 cs_height_lg_25"></div>
   <label>Confirm Password*</label>
   <div class="password-wrapper">
-      <input type="password" name="confirm_password" id="confirm_password" class="cs_form_field_2 cs_radius_20" required>
+      <input type="password" name="password_confirmation" id="confirm_password" class="cs_form_field_2 cs_radius_20" required>
       <span class="toggle-password" onclick="togglePassword('confirm_password')">👁️</span>
   </div>
   <small id="passwordError" style="color: red;"></small>
@@ -178,4 +190,3 @@ function togglePassword(fieldId) {
 
   @include('user.layouts.footer')
   @include('user.layouts.script')
-  

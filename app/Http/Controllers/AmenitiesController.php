@@ -4,7 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreAmenitiesRequest;
 use App\Http\Requests\UpdateAmenitiesRequest;
-use App\Models\Amenities;
+use App\Models\Amenity;
+use App\Models\Hotel;
 
 class AmenitiesController extends Controller
 {
@@ -14,8 +15,8 @@ class AmenitiesController extends Controller
     public function index()
     {
         //
-        $amenities = Amenities::paginate(10);
-        return view('admin.amenitie.index', compact('amenities'));
+        $amenities = Amenity::paginate(10);
+        return view('admin.amenitieForHotels.index', compact('amenities'));
     }
 
     /**
@@ -23,8 +24,8 @@ class AmenitiesController extends Controller
      */
     public function create()
     {
-        //
-        return view('admin.amenitie.create');
+        $hotels = Hotel::all();
+        return view('admin.amenitieForHotels.create', compact('hotels'));
     }
 
     /**
@@ -33,14 +34,18 @@ class AmenitiesController extends Controller
     public function store(StoreAmenitiesRequest $request)
     {
         //
-        Amenities::create($request->validated());
+        $amenity= Amenity::create($request->validated());
+
+        if($request->hotel_id){
+            $amenity->hotels()->attach($request->hotel_id);
+        }
         return redirect()->route('admin.amenities.index')->with('success', 'Amenitie Created Successfully');
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Amenities $amenities)
+    public function show(Amenity $amenities)
     {
         //
     }
@@ -51,8 +56,8 @@ class AmenitiesController extends Controller
     public function edit($id)
     {
         //
-        $amenities = Amenities::find($id);
-        return view('admin.amenitie.edit', compact('amenities'));
+        $amenities = Amenity::find($id);
+        return view('admin.amenitieForHotels.edit', compact('amenities'));
     }
 
     /**
@@ -61,7 +66,7 @@ class AmenitiesController extends Controller
     public function update(UpdateAmenitiesRequest $request, $id)
     {
         //
-        $amenities = Amenities::find($id);
+        $amenities = Amenity::find($id);
         $amenities->update($request->validated());
         return redirect()->route('admin.amenities.index')->with('success', 'Amenitie Updated Successfully');
     }
@@ -72,7 +77,7 @@ class AmenitiesController extends Controller
     public function destroy($id)
     {
         //
-        $amenities = Amenities::find($id);
+        $amenities = Amenity::find($id);
         $amenities->delete();
         return redirect()->route('admin.amenities.index')->with('success', 'Amenitie Deleted Successfully');
     }

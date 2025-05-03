@@ -1,6 +1,6 @@
 <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
     <div class="app-brand demo">
-      <a href="index.html" class="app-brand-link">
+      <a href="{{ route('index') }}" class="app-brand-link">
         <span class="app-brand-logo demo">
 
         </span>
@@ -55,9 +55,22 @@
       <li class="menu-item @yield('amenities') ">
         <a href="{{route('admin.amenities.index')}}" class="menu-link">
           <i class="menu-icon tf-icons bx bx-home-circle"></i>
-          <div data-i18n="Analytics">Amenities</div>
+          <div data-i18n="Analytics">Amenities For Hotels</div>
         </a>
       </li>
+      <li class="menu-item @yield('amenities') ">
+        <a href="{{route('admin.amenities-room.index')}}" class="menu-link">
+          <i class="menu-icon tf-icons bx bx-home-circle"></i>
+          <div data-i18n="Analytics">Amenities For Rooms</div>
+        </a>
+      </li>
+
+      <li class="menu-item @yield('contact') ">
+            <a href="{{route('admin.contact.index')}}" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-home-circle"></i>
+                <div data-i18n="Analytics">Contact Us</div>
+            </a>
+        </li>
 
     </ul>
   </aside>
