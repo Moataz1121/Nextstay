@@ -15,7 +15,7 @@
             <nav class="cs_nav cs_fs_13 cs_semibold">
               <ul class="cs_nav_list">
               <li><a href="{{ route('index') }}">Home</a></li>
-              <li><a href="Index.php">About Us</a></li>
+{{--              <li><a href="Index.php">About Us</a></li>--}}
               <li><a href="{{ url('gallery') }}">Popular Destinations</a></li>
               <li><a href="{{ route('contact') }}">Contact Us</a></li> <br>
 
@@ -27,6 +27,9 @@
           <div class="cs_main_header_right">
             <a href="{{ route('register') }}" class="cs_btn cs_style_2 cs_medium cs_radius_20 cs_fs_15">
               Register
+            </a>
+              <a href="{{ route('login') }}" class="cs_btn cs_style_2 cs_medium cs_radius_20 cs_fs_15">
+              Login
             </a>
 
           </div>

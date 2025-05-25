@@ -68,48 +68,40 @@
                   </ul>
 
               </li>
-              <li><a href="about.php">About Us</a></li>
-              <li class="menu-item-has-children">
-                <a href="rooms.php">Rooms</a>
-                <ul>
-                  <li><a href="rooms.php">Room Grid View</a></li>
-                  <li><a href="rooms-list-view.php">Room List View</a></li>
-                  <li><a href="room-details.php">Room Details V1</a></li>
-                  <li><a href="room-details-v2.php">Room Details V2</a></li>
-                  <li><a href="room-details-v3.php">Room Details V3</a></li>
-                  <li><a href="search-result.php">Room Search Result</a></li>
-                  <li><a href="complete-reservation.php">Payment Page</a></li>
-                </ul>
-              </li>
-              <li><a href="services.php">Services</a></li>
-              <li><a href="restaurant.php">Restaurant</a></li>
-              <li class="menu-item-has-children">
-                <a href="">Pages</a>
-                <ul>
-                  <li><a href="restaurant.php">Restaurant & Bar</a></li>
-                  <li><a href="spa-wellness.php">SPA & Wellness</a></li>
-                  <li><a href="infinity-pool.php">Infinity Pool</a></li>
-                  <li><a href="team.php">Team</a></li>
-                  <li><a href="gallery.php">Gallery</a></li>
-                  <li><a href="faq.php">FAQ</a></li>
-                  <li><a href="404.php">Error 404</a></li>
-                </ul>
-              </li>
-              <li class="menu-item-has-children">
-                <a href="blog.php">Blog</a>
-                <ul>
-                  <li><a href="blog.php">Sidebar Blog</a></li>
-                  <li><a href="blog-grid.php">Blog Grid View</a></li>
-                  <li><a href="blog-list.php">Blog List View</a></li>
-                  <li><a href="blog-details.php">Blog Details</a></li>
-                </ul>
-              </li>
-              <li><a href="contact.php">Contact</a></li>
+{{--              <li><a href="about.php">About Us</a></li>--}}
+{{--              <li class="menu-item-has-children">--}}
+{{--                <a href="rooms.php">Rooms</a>--}}
+{{--                <ul>--}}
+{{--                  <li><a href="rooms.php">Room Grid View</a></li>--}}
+{{--                  <li><a href="rooms-list-view.php">Room List View</a></li>--}}
+{{--                  <li><a href="room-details.php">Room Details V1</a></li>--}}
+{{--                  <li><a href="room-details-v2.php">Room Details V2</a></li>--}}
+{{--                  <li><a href="room-details-v3.php">Room Details V3</a></li>--}}
+{{--                  <li><a href="search-result.php">Room Search Result</a></li>--}}
+{{--                  <li><a href="complete-reservation.php">Payment Page</a></li>--}}
+{{--                </ul>--}}
+{{--              </li>--}}
+{{--              <li><a href="services.php">Services</a></li>--}}
+{{--              <li><a href="restaurant.php">Restaurant</a></li>--}}
+{{--              <li class="menu-item-has-children">--}}
+{{--                <a href="">Pages</a>--}}
+{{--                <ul>--}}
+{{--                  <li><a href="restaurant.php">Restaurant & Bar</a></li>--}}
+{{--                  <li><a href="spa-wellness.php">SPA & Wellness</a></li>--}}
+{{--                  <li><a href="infinity-pool.php">Infinity Pool</a></li>--}}
+{{--                  <li><a href="team.php">Team</a></li>--}}
+{{--                  <li><a href="gallery.php">Gallery</a></li>--}}
+{{--                  <li><a href="faq.php">FAQ</a></li>--}}
+{{--                  <li><a href="404.php">Error 404</a></li>--}}
+{{--                </ul>--}}
+{{--              </li>--}}
+                <li><a href="{{ url('gallery') }}">Popular Destinations</a></li>
+                <li><a href="{{ route('contact') }}">Contact Us</a></li> <br>
             </ul>
           </div>
         </div>
         <div class="cs_main_header_right">
-          <a href="rooms.php" class="cs_btn cs_style_2 cs_medium cs_radius_20 cs_fs_15">
+          <a href="{{ route('index') }}" class="cs_btn cs_style_2 cs_medium cs_radius_20 cs_fs_15">
             Reservation
           </a>
         </div>

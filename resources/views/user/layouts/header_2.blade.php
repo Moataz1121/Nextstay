@@ -12,8 +12,8 @@
               <ul class="cs_nav_list">
                 <!-- <li class="menu-item-has-children cs_mega_menu"> -->
                 <li><a href="{{ route('index') }}">Home</a></li>
-              <li><a href="Index.php">About Us</a></li>
-              <li><a href="gallery.php">Popular Destinations</a></li>
+{{--              <li><a href="Index.php">About Us</a></li>--}}
+                  <li><a href="{{ url('gallery') }}">Popular Destinations</a></li>
               <li><a href="{{ route('contact') }}">Contact Us</a></li> <br>
 
                 </ul>

@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\City;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -17,7 +18,9 @@ class HotelFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'name' => $this->faker->name(),
+            'address' => $this->faker->address(),
+            'city_id' => City::inRandomOrder()->first()?->id,
         ];
     }
 }
