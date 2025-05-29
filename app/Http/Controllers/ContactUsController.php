@@ -33,7 +33,7 @@ class ContactUsController extends Controller
         ]);
 
         $data = $request;
-        $data['user_id'] = Auth::id();
+        $data['user_id'] = Auth::id() ?? null;
 
         Contact::query()->create($data);
 
