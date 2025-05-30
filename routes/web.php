@@ -6,7 +6,6 @@ use App\Http\Controllers\AmenityRoomController;
 use App\Http\Controllers\CityController;
 use App\Http\Controllers\CompleteReservationController;
 use App\Http\Controllers\ContactUsController;
-use App\Http\Controllers\DetailHotelController;
 use App\Http\Controllers\DetailRoomController;
 use App\Http\Controllers\HotelController;
 use App\Http\Controllers\ProfileController;
@@ -15,9 +14,6 @@ use App\Http\Controllers\RoomTypeController;
 use App\Http\Controllers\ShowHotelController;
 use Illuminate\Support\Facades\Route;
 
-//Route::get('/', function () {
-//    return view('welcome');
-//});
 
 Route::get('/dashboard', function () {
     return view('dashboard');

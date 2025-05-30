@@ -46,12 +46,12 @@
         <div class="swiper-slide">
           <div class="cs_hero cs_style_1 cs_center text-center position-relative">
             <figure class="cs_swiper_parallax_bg cs_hero_bg cs_bg_filed h-100 w-100 position-absolute top-0 start-0 mb-0" data-src="assets/img/Home_bg_1.jpeg"></figure>
-            <div class="container position-relative cs_zindex_3">
+            <div class="position-relative cs_zindex_3">
               <div class="cs_hero_text">
                 <p class="cs_hero_subtitle cs_white_color text-uppercase d-inline-flex position-relative cs_mb_25 cs_letter_spacing_1">
-                  <img class="cs_hero_subtitle_icon_1 position-absolute start-0" src="assets/img/icons/star.svg" alt="Star">
+                  <img class="cs_hero_subtitle_icon_1  start-0" src="{{ asset('assets') }}/img/1page_heading_bg_rooms.jpeg" alt="Star">
                   Your dream stay is just a click away
-                  <img class="cs_hero_subtitle_icon_2 position-absolute end-0" src="assets/img/icons/star.svg" alt="Star">
+                  {{-- <img class="cs_hero_subtitle_icon_2 position-absolute end-0" src="assets/img/icons/star.svg" alt="Star"> --}}
                 </p>
                 <h1 class="cs_hero_title cs_fs_89 cs_white_color mb-0">We Find The Best Hotels For You <br>Hotel & Resort</h1>
               </div>
@@ -62,6 +62,7 @@
           <div class="cs_hero cs_style_1 cs_center text-center position-relative">
             <figure class="cs_swiper_parallax_bg cs_hero_bg cs_bg_filed h-100 w-100 position-absolute top-0 start-0 mb-0" data-src="assets/img/home_bg_2.jpeg"></figure>
             <div class="container position-relative cs_zindex_3">
+
               <div class="cs_hero_text">
                 <p class="cs_hero_subtitle cs_white_color text-uppercase d-inline-flex position-relative cs_mb_25 cs_letter_spacing_1">
                   <img class="cs_hero_subtitle_icon_1 position-absolute start-0" src="assets/img/icons/star.svg" alt="Star">
@@ -153,10 +154,10 @@
       <div class="cs_city_list">
         <select class="cs_city_dropdown" id="citySelect">
           <?php
-            $cities = ["Cairo", "Alexandria", "Giza", "Sharm El Sheikh", "Hurghada", "Luxor", "Aswan", "Marsa Alam"];
-            foreach ($cities as $city) {
-                echo "<option value='$city'>$city</option>";
-            }
+$cities = ["Cairo", "Alexandria", "Giza", "Sharm El Sheikh", "Hurghada", "Luxor", "Aswan", "Marsa Alam"];
+foreach ($cities as $city) {
+    echo "<option value='$city'>$city</option>";
+}
           ?>
         </select>
       </div>

@@ -7,9 +7,6 @@
       <h1 class="cs_white_color text-center mb-0 cs_fs_67">Popular Destinations</h1>
     </div>
   </section>
-  <!-- End Page Heading Section -->
-
-  <!-- Start Gallery Section -->
   <section>
     <div class="cs_height_141 cs_height_lg_75"></div>
     <div class="container">
@@ -22,10 +19,8 @@
     <div class="container">
       <div class="cs_grid_style_2 cs_lightgallery">
         <div class="cs_grid_item">
-          <!-- <a href="assets/img/gallery_9.jpeg" class="cs_gallery_item cs_style_3 cs_lightbox_item d-block cs_bg_filed position-relative" data-src="assets/img/gallery_9.jpeg"> -->
             <div class="cs_gallery_item_hover cs_primary_font cs_fs_38">
-              <!-- <span class="cs_hover_icon cs_accent_color">
-                <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg"> -->
+
                 <div class="cs_grid_item">
   <a href="search-result-giza.php?city=Giza" class="d-block position-relative">
       <img src="assets/img/gallery_9.jpeg" alt="giza" class="w-100">
@@ -289,4 +284,3 @@
 
   @include('user.layouts.footer')
   @include('user.layouts.script')
-  
