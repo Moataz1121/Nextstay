@@ -1,113 +1,40 @@
 @include('user.layouts.head')
 
 @include('user.layouts.Preloader')
-<div class="cs_main_header">
-    <div class="container">
-      <div class="cs_main_header_in">
-        <div class="cs_main_header_left">
-          <a class="cs_site_branding" href="{{ route('index') }}">
-            <img src=" {{ asset('assets/img/logo-black.svg') }} " alt="Logo">
-          </a>
-        </div>
-        <div class="cs_main_header_center">
-          <div class="cs_nav cs_fs_13 cs_semibold">
-            <ul class="cs_nav_list">
-              <li class="menu-item-has-children cs_mega_menu">
-                <a href="{{ route('index') }}">Home</a>
-                  <ul class="cs_mega_wrapper cs_with_thumb">
-                      <li>
-                          <a href="{{ route('index') }}">
-                              <img src="{{ asset('assets/img/demo/home-1.jpeg') }}" alt="">Default Hotel & Resort
-                          </a>
-                      </li>
-                      <li>
-                          <a href="{{ route('index') }}">
-                              <img src="{{ asset('assets/img/demo/home-2.jpeg') }}" alt="">Hotel & Resort V2
-                          </a>
-                      </li>
-                      <li>
-                          <a href="{{ route('index') }}">
-                              <img src="{{ asset('assets/img/demo/home-3.jpeg') }}" alt="">Hotel & Resort V3
-                          </a>
-                      </li>
-                      <li>
-                          <a href="{{ route('index') }}">
-                              <img src="{{ asset('assets/img/demo/home-4.jpeg') }}" alt="">Hotel & Resort V4
-                          </a>
-                      </li>
-                      <li>
-                          <a href="{{ route('index') }}">
-                              <img src="{{ asset('assets/img/demo/home-5.jpeg') }}" alt="">Hotel & Resort V5
-                          </a>
-                      </li>
-                      <li>
-                          <a href="{{ route('index') }}">
-                              <img src="{{ asset('assets/img/demo/home-6.jpeg') }}" alt="">Hotel & Resort V6
-                          </a>
-                      </li>
-                      <li>
-                          <a href="{{ route('index') }}">
-                              <img src="{{ asset('assets/img/demo/home-7.jpeg') }}" alt="">Hotel & Resort V7
-                          </a>
-                      </li>
-                      <li>
-                          <a href="{{ route('index') }}">
-                              <img src="{{ asset('assets/img/demo/home-8.jpeg') }}" alt="">Hotel & Resort V8
-                          </a>
-                      </li>
-                      <li>
-                          <a href="{{ route('index') }}">
-                              <img src="{{ asset('assets/img/demo/home-9.jpeg') }}" alt="">Hostel
-                          </a>
-                      </li>
-                      <li>
-                          <a href="{{ route('index') }}">
-                              <img src="{{ asset('assets/img/demo/home-10.jpeg') }}" alt="">Luxury Hotel
-                          </a>
-                      </li>
-                  </ul>
+<header class="cs_site_header cs_style_1 cs_transparent_header cs_primary_color cs_sticky_header">
+    <div class="cs_main_header">
+        <div class="container">
+            <div class="cs_main_header_in">
+                <div class="cs_main_header_left">
+                    <a class="cs_site_branding" href="{{ route('index') }}">
+                        <img src="{{ asset('assets/img/logo_next_stay.png') }}" alt="Logo">
+                    </a>
+                </div>
+                <div class="cs_main_header_center">
+                    <nav class="cs_nav cs_fs_13 cs_semibold">
+                        <ul class="cs_nav_list">
+                            <li><a href="{{ route('index') }}">Home</a></li>
+                            {{-- <li><a href="Index.php">About Us</a></li>--}}
+                            <li><a href="{{ url('gallery') }}">Popular Destinations</a></li>
+                            <li><a href="{{ route('contact') }}">Contact Us</a></li> <br>
 
-              </li>
-{{--              <li><a href="about.php">About Us</a></li>--}}
-{{--              <li class="menu-item-has-children">--}}
-{{--                <a href="rooms.php">Rooms</a>--}}
-{{--                <ul>--}}
-{{--                  <li><a href="rooms.php">Room Grid View</a></li>--}}
-{{--                  <li><a href="rooms-list-view.php">Room List View</a></li>--}}
-{{--                  <li><a href="room-details.php">Room Details V1</a></li>--}}
-{{--                  <li><a href="room-details-v2.php">Room Details V2</a></li>--}}
-{{--                  <li><a href="room-details-v3.php">Room Details V3</a></li>--}}
-{{--                  <li><a href="search-result.php">Room Search Result</a></li>--}}
-{{--                  <li><a href="complete-reservation.php">Payment Page</a></li>--}}
-{{--                </ul>--}}
-{{--              </li>--}}
-{{--              <li><a href="services.php">Services</a></li>--}}
-{{--              <li><a href="restaurant.php">Restaurant</a></li>--}}
-{{--              <li class="menu-item-has-children">--}}
-{{--                <a href="">Pages</a>--}}
-{{--                <ul>--}}
-{{--                  <li><a href="restaurant.php">Restaurant & Bar</a></li>--}}
-{{--                  <li><a href="spa-wellness.php">SPA & Wellness</a></li>--}}
-{{--                  <li><a href="infinity-pool.php">Infinity Pool</a></li>--}}
-{{--                  <li><a href="team.php">Team</a></li>--}}
-{{--                  <li><a href="gallery.php">Gallery</a></li>--}}
-{{--                  <li><a href="faq.php">FAQ</a></li>--}}
-{{--                  <li><a href="404.php">Error 404</a></li>--}}
-{{--                </ul>--}}
-{{--              </li>--}}
-                <li><a href="{{ url('gallery') }}">Popular Destinations</a></li>
-                <li><a href="{{ route('contact') }}">Contact Us</a></li> <br>
-            </ul>
-          </div>
+                            <!-- <li><a href="search-result.php">Search</a></li> -->
+
+                        </ul>
+                    </nav>
+                </div>
+                <div class="cs_main_header_right">
+                    <a href="{{ route('register') }}" class="cs_btn cs_style_2 cs_medium cs_radius_20 cs_fs_15">
+                        Register
+                    </a>
+                    <a href="{{ route('login') }}" class="cs_btn cs_style_2 cs_medium cs_radius_20 cs_fs_15">
+                        Login
+                    </a>
+
+                </div>
+            </div>
         </div>
-        <div class="cs_main_header_right">
-          <a href="{{ route('index') }}" class="cs_btn cs_style_2 cs_medium cs_radius_20 cs_fs_15">
-            Reservation
-          </a>
-        </div>
-      </div>
     </div>
-  </div>
 </header>
 <!-- End Header Section -->
 

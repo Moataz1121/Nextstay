@@ -12,8 +12,8 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RoomController;
 use App\Http\Controllers\RoomTypeController;
 use App\Http\Controllers\ShowHotelController;
+use App\Models\City;
 use Illuminate\Support\Facades\Route;
-
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -25,22 +25,27 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-
-
-Route::middleware(['auth','checkUserType'])->prefix('admin')->name('admin.')->group(function () {
-Route::get('/index' , [HomeController::class , 'index'])->name('index');
-Route::resource('/city' , CityController::class);
-Route::resource ('/hotel' , HotelController::class);
-Route::resource('/roomtype' , RoomTypeController::class);
-Route::resource('/room' , RoomController::class);
-Route::resource('/amenities' , AmenitiesController::class);
-Route::resource('/amenities-room' , AmenityRoomController::class);
-Route::get('contact-us', [ContactUsController::class, 'index'])->name('contact.index');
+Route::middleware(['auth', 'checkUserType'])->prefix('admin')->name('admin.')->group(function () {
+    Route::get('/index', [HomeController::class, 'index'])->name('index');
+    Route::resource('/city', CityController::class);
+    Route::resource('/hotel', HotelController::class);
+    Route::resource('/roomtype', RoomTypeController::class);
+    Route::resource('/room', RoomController::class);
+    Route::resource('/amenities', AmenitiesController::class);
+    Route::resource('/amenities-room', AmenityRoomController::class);
+    Route::get('contact-us', [ContactUsController::class, 'index'])->name('contact.index');
 });
 
-Route::get('gallery' , function(){
-    return view('user.gallery');
+Route::get('gallery', function () {
+    $cities = City::with('media')->take(10)->get();
+    return view('user.gallery', compact('cities'));
 });
+
+Route::get('/city/{city}', [CityController::class, 'showHotels'])->name('city.hotels');
+
+Route::get('/hotel/{hotel}/rooms', [HotelController::class, 'showRooms'])->name('hotel.rooms');
+
+
 
 Route::get('contact', [ContactUsController::class, 'create'])->name('contact');
 Route::post('contact', [ContactUsController::class, 'store'])->name('contact.store');
@@ -49,7 +54,6 @@ Route::get('/', [ShowHotelController::class, 'index'])->name('index');
 Route::get('details-hotel/{id}', [ShowHotelController::class, 'show'])->name('details.hotel');
 Route::get('details-room/{id}', [DetailRoomController::class, 'show'])->name('details.room');
 
-
 Route::post('complete-booking', [CompleteReservationController::class, 'store'])->name('complete.booking');
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';

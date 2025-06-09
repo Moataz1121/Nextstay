@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreHotelRequest;
@@ -16,7 +15,7 @@ class HotelController extends Controller
     {
         //
         $hotels = Hotel::paginate(10);
-        return view('admin.hotel.index' , compact('hotels'));
+        return view('admin.hotel.index', compact('hotels'));
     }
 
     /**
@@ -26,7 +25,7 @@ class HotelController extends Controller
     {
         //
         $cities = City::all();
-        return view('admin.hotel.create' , compact('cities'));
+        return view('admin.hotel.create', compact('cities'));
     }
 
     /**
@@ -36,7 +35,7 @@ class HotelController extends Controller
     {
         //
         // dd($request->validated());
-        $data = $request->validated();
+        $data  = $request->validated();
         $hotel = Hotel::create($data);
         if ($request->hasFile('images')) {
             foreach ($request->file('images') as $image) {
@@ -65,9 +64,9 @@ class HotelController extends Controller
     public function edit(Hotel $hotel)
     {
         //
-        $hotel = Hotel::with('media')->find($hotel->id);
+        $hotel  = Hotel::with('media')->find($hotel->id);
         $cities = City::all();
-        return view('admin.hotel.edit' , compact('hotel' , 'cities'));
+        return view('admin.hotel.edit', compact('hotel', 'cities'));
     }
 
     /**
@@ -92,9 +91,19 @@ class HotelController extends Controller
      */
     public function destroy(Hotel $hotel)
     {
-        //
+                                        //
         $hotel->clearMediaCollection(); // This will delete all media associated with the hotel
         $hotel->delete();
         return redirect()->route('admin.hotel.index')->with('success', 'Hotel Deleted Successfully');
+    }
+
+    public function showRooms($hotelId)
+    {
+        $hotel = Hotel::findOrFail($hotelId);
+
+        // Eager load room types and their rooms
+        $roomTypes = $hotel->roomTypes()->with('rooms.media')->get();
+
+        return view('user.hotel_rooms', compact('hotel', 'roomTypes'));
     }
 }

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreCityRequest;
 use App\Http\Requests\UpdateCityRequest;
 use App\Models\City;
+use App\Models\Hotel;
 
 class CityController extends Controller
 {
@@ -81,5 +82,13 @@ class CityController extends Controller
         //
         $city->delete();
         return redirect()->route('admin.city.index')->with('success', 'City Deleted Successfully');
+    }
+
+    public function showHotels($id)
+    {
+        $city   = City::findOrFail($id);
+        $hotels = Hotel::where('city_id', $id)->with('media')->get();
+
+        return view('user.city_hotels', compact('city', 'hotels'));
     }
 }

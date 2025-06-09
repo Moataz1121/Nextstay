@@ -26,7 +26,7 @@ class ShowHotelController extends Controller
         }
 
         $hotels = $query->get();
-        dump($hotels->first()?->getFirstMediaUrl('hotel_images'));
+        // dump($hotels->first()?->getFirstMediaUrl('hotel_images'));
 
         return view('user.index', compact('hotels'));
 

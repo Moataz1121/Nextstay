@@ -10,9 +10,9 @@ use Illuminate\Http\Request;
 class CompleteReservationController extends Controller
 {
 
-    public function store(StoreCompleteReservationRequest $request): RedirectResponse
+    public function store(StoreCompleteReservationRequest $request)
     {
-    echo 'hi ';
+   return  'hi ';
 //        try {
 //            $dateTimes = explode(' - ', $request->input('datetimes'));
 //
@@ -21,7 +21,6 @@ class CompleteReservationController extends Controller
 //                $check_in = $dateTimes[0];
 //                $check_out = $dateTimes[1];
 //
-//                // إضافة التواريخ إلى بيانات الريكوست المرسلة إلى الحجز
 //                $validatedData = $request->validated();
 //                $validatedData['check_in'] = $check_in;
 //                $validatedData['check_out'] = $check_out;

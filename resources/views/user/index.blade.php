@@ -270,7 +270,7 @@ document.getElementById("citySelect").addEventListener("change", function() {
                             <div class="cs_card cs_style_7 cs_radius_5 overflow-hidden">
                                 <a href="{{ route('details.hotel', $hotel->id) }}" class="cs_card_thumb d-block overflow-hidden position-relative cs_primary_bg">
                                     <img src="{{ $hotel->getFirstMediaUrl('hotel_images') }}" alt="Room">
-                                    @dump($hotel->getFirstMediaUrl('hotel_images'))
+                                    {{-- @dump($hotel->getFirstMediaUrl('hotel_images')) --}}
                                     <span class="cs_card_btn position-absolute cs_zindex_2">
               <span class="cs_btn cs_style_2 cs_accent_btn cs_medium cs_radius_5 cs_fs_15">
                 <b>Details View</b>
