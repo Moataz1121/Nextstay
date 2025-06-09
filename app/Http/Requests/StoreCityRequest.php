@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
@@ -23,7 +22,8 @@ class StoreCityRequest extends FormRequest
     {
         return [
             //
-            'name' => 'required|max:50'
+            'name'  => 'required|max:50',
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ];
     }
 }

@@ -1,10 +1,8 @@
 <?php
-
 namespace App\Http\Controllers;
 
 use App\Models\Hotel;
 use App\Models\Room;
-use App\Models\RoomType;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Foundation\Application;
@@ -12,7 +10,7 @@ use Illuminate\Http\Request;
 
 class ShowHotelController extends Controller
 {
-    public function index(): View|Application|Factory
+    public function index(): View | Application | Factory
     {
         $query = Hotel::query()->with('roomTypes');
 
@@ -28,14 +26,13 @@ class ShowHotelController extends Controller
         }
 
         $hotels = $query->get();
+        dump($hotels->first()?->getFirstMediaUrl('hotel_images'));
 
-//        return view('user.search-result-alex', compact('hotels'));
         return view('user.index', compact('hotels'));
 
     }
 
-
-    public function show(string $id): View|Application|Factory
+    public function show(string $id): View | Application | Factory
     {
         $hotels = Hotel::query()->with('amenities')->findOrFail($id);
 

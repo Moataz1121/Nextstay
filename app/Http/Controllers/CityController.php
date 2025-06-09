@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreCityRequest;
@@ -15,7 +14,7 @@ class CityController extends Controller
     {
         //
         $cites = City::all();
-        return view('admin.city.index' , compact('cites'));
+        return view('admin.city.index', compact('cites'));
     }
 
     /**
@@ -30,12 +29,18 @@ class CityController extends Controller
 
     /**
      * Store a newly created resource in storage.
-     */
-    public function store(StoreCityRequest $request)
+     */public function store(StoreCityRequest $request)
     {
-
         $data = $request->validated();
-        City::create($data);
+
+        $city = City::create([
+            'name' => $data['name'],
+        ]);
+
+        if ($request->hasFile('image')) {
+            $city->addMediaFromRequest('image')->toMediaCollection('city_images');
+        }
+
         return redirect()->route('admin.city.index')->with('success', 'City Created Successfully');
     }
 
@@ -54,7 +59,7 @@ class CityController extends Controller
     {
         //
         $city = City::find($city->id);
-        return view('admin.city.edit' , compact('city'));
+        return view('admin.city.edit', compact('city'));
     }
 
     /**

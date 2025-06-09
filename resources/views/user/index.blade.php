@@ -262,8 +262,6 @@ document.getElementById("citySelect").addEventListener("change", function() {
       <div class="cs_slider cs_style_1 cs_slider_gap_40 cs_hover_show_arrows">
           <div class="cs_slider_container" data-autoplay="0" data-loop="1" data-speed="600" data-center="0" data-variable-width="0" data-slides-per-view="responsive" data-xs-slides="1" data-sm-slides="2" data-md-slides="2" data-lg-slides="3" data-add-slides="3">
 
-            {{--            here      --}}
-
 
             <div class="col-lg-8">
                 <div class="row cs_gap_y_60">
@@ -272,6 +270,7 @@ document.getElementById("citySelect").addEventListener("change", function() {
                             <div class="cs_card cs_style_7 cs_radius_5 overflow-hidden">
                                 <a href="{{ route('details.hotel', $hotel->id) }}" class="cs_card_thumb d-block overflow-hidden position-relative cs_primary_bg">
                                     <img src="{{ $hotel->getFirstMediaUrl('hotel_images') }}" alt="Room">
+                                    @dump($hotel->getFirstMediaUrl('hotel_images'))
                                     <span class="cs_card_btn position-absolute cs_zindex_2">
               <span class="cs_btn cs_style_2 cs_accent_btn cs_medium cs_radius_5 cs_fs_15">
                 <b>Details View</b>
