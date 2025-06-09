@@ -22,17 +22,17 @@ class StoreCompleteReservationRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'user_id' => 'required|integer|exists:users,id',
-            'room_id' => 'required|exists:rooms,id',
-            'check_in' => 'required|date',
-            'check_out' => 'required|date',
-            'capacity' => 'required|integer',
-            'adult' => 'required|integer|min:0',
+            'user_id' => 'nullable|integer|exists:users,id',
+            'room_id' => 'nullable|exists:rooms,id',
+            'check_in' => 'nullable|date',
+            'check_out' => 'nullable|date',
+            'capacity' => 'nullable|integer',
+            'adult' => 'nullable|integer|min:0',
             'children' => 'nullable|integer|min:0',
             'room-clean' => 'nullable',
             'spa' => 'nullable',
             'massage' => 'nullable',
-            'total_price' => 'required|numeric',
+            'total_price' => 'nullable|numeric',
         ];
     }
 }

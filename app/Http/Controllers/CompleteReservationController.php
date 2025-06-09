@@ -12,7 +12,11 @@ class CompleteReservationController extends Controller
 
     public function store(StoreCompleteReservationRequest $request)
     {
-   return  'hi ';
+        // dd($request->validated());
+//    return  'hi ';
+return redirect()->back()->with('success', 'Your booking has been successfully reserved');
+    }
+}
 //        try {
 //            $dateTimes = explode(' - ', $request->input('datetimes'));
 //
@@ -34,5 +38,4 @@ class CompleteReservationController extends Controller
 //        } catch (\Exception $exception) {
 //            return redirect()->back()->with('error', $exception->getMessage());
 //        }
-    }
-}
+

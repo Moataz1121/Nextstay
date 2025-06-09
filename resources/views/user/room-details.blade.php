@@ -35,6 +35,14 @@
         </div>
         <div class="col-lg-6">
           <div class="cs_pl_110">
+            @if(session('success'))
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    <i class="fa fa-check-circle me-2"></i>
+                    {{ session('success') }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            @endif
+
               <form action="{{ route('complete.booking') }}"  method="POST" class="cs_book_now_card cs_accent_bg cs_radius_5">
                   @csrf
                   @if(session('success'))
@@ -311,7 +319,7 @@
   <!-- End Feature Section -->
 
   <!-- Start Related Rooms Section -->
- 
+
 
   @include('user.layouts.footer')
   @include('user.layouts.script')
