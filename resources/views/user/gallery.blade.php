@@ -17,20 +17,27 @@
       <div class="cs_height_80 cs_height_lg_50"></div>
     </div>
     <div class="container">
-        @foreach ($cities as $city)
-            @if ($city->hasMedia('city_images'))
-                <div class="cs_grid_item">
-                    <a href="{{ route('city.hotels', $city->id) }}" class="d-block position-relative">
-                        <img src="{{ $city->getFirstMediaUrl('city_images') }}" alt="{{ $city->name }}" class="w-100">
-                        <div class="cs_gallery_text position-absolute bottom-0 start-0 p-2 text-white bg-dark">
-                            {{ $city->name }}
+        <div class="row">
+            @foreach ($cities as $city)
+                @if ($city->hasMedia('city_images'))
+                    <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
+                        <div class="position-relative overflow-hidden rounded" style="height: 400px;">
+                            <a href="{{ route('city.hotels', $city->id) }}">
+                                <img src="{{ $city->getFirstMediaUrl('city_images') }}" alt="{{ $city->name }}" class="w-100 h-100"
+                                    style="object-fit: cover; border-radius: 8px;">
+                                <div class="position-absolute bottom-0 start-0 w-100 p-2" style="background: rgba(0, 0, 0, 0.6);">
+                                    <h5 class="text-white m-0">{{ $city->name }}</h5>
+                                </div>
+                            </a>
                         </div>
-                    </a>
-                </div>
-            @endif
-        @endforeach
+                    </div>
+                @endif
+            @endforeach
+        </div>
+    </div>
 
-      </div>
+
+
         </button>
       </div>
     </div>

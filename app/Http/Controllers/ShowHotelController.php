@@ -13,7 +13,6 @@ class ShowHotelController extends Controller
     public function index(): View | Application | Factory
     {
         $query = Hotel::query()->with('roomTypes');
-
         if (request()->filled('price_from') || request()->filled('price_to')) {
             $query->whereHas('roomTypes', function ($q) {
                 if (request()->filled('price_from')) {
@@ -24,10 +23,7 @@ class ShowHotelController extends Controller
                 }
             });
         }
-
         $hotels = $query->get();
-        // dump($hotels->first()?->getFirstMediaUrl('hotel_images'));
-
         return view('user.index', compact('hotels'));
 
     }
