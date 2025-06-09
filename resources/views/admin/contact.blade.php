@@ -6,10 +6,10 @@
 
         <div>
             @foreach($contacts as $contact) @endforeach
-            <h6>Name: {{ $contact->name }}</h6>
-            <p>Email: {{ $contact->email }}</p>
-            <p>Message: {{ $contact->message }}</p>
-            <p>User Id: {{ $contact->user_id }}</p>
+            <h6>Name: {{ $contact->name ?? 'N/A' }}</h6>
+            <p>Email: {{ $contact->email ?? 'N/A' }}</p>
+            <p>Message: {{ $contact->message ?? 'N/A' }}</p>
+            {{-- <p>User Id: {{ $contact->user_id }}</p> --}}
             <hr>
         </div>
     </div>

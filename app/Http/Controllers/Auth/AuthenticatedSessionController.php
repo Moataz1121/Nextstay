@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
@@ -10,15 +9,13 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
-use Inertia\Inertia;
-use Inertia\Response;
 
 class AuthenticatedSessionController extends Controller
 {
     /**
      * Display the login view.
      */
-    public function create(): UrlGenerator|Application|string
+    public function create(): UrlGenerator | Application | string
     {
 //        return Inertia::render('Auth/Login', [
 //            'canResetPassword' => Route::has('password.request'),
@@ -35,6 +32,12 @@ class AuthenticatedSessionController extends Controller
         $request->authenticate();
 
         $request->session()->regenerate();
+
+        $user = Auth::user();
+
+        if ($user->role === 'admin') {
+            return redirect()->route('admin.index');
+        }
 
         return redirect()->intended(route('index', absolute: false));
     }
