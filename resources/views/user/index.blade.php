@@ -119,8 +119,9 @@
     </div>
     <div class="cs_half_ternary_bg position-relative">
         <div class="container">
-            <form action="search-result.php"
+            <form method="POST" action="{{ route('filter') }}"
                 class="cs_form cs_style_4 cs_accent_bg cs_radius_5 position-relative cs_zindex_10">
+                @csrf
                 <div class="cs_date_items">
                     <input type="text" name="datetimes" class="cs_datetimes">
                     <div class="cs_form_item cs_date_item">
@@ -180,13 +181,10 @@
                             <div class="cs_quantity_dropdown_item">
                                 <span class="cs_quantity_title">Select a City :</span>
                                 <div class="cs_city_list">
-                                    <select class="cs_city_dropdown" id="citySelect">
-                                        <?php
-                                        $cities = ['Cairo', 'Alexandria', 'Giza', 'Sharm El Sheikh', 'Hurghada', 'Luxor', 'Aswan', 'Marsa Alam'];
-                                        foreach ($cities as $city) {
-                                            echo "<option value='$city'>$city</option>";
-                                        }
-                                        ?>
+                                    <select class="cs_city_dropdown" name="city_id" id="citySelect">
+                                        @foreach ($cities as $city)
+                                             <option value="{{ $city->id }}">{{ $city->name }}</option>
+                                        @endforeach
                                     </select>
                                 </div>
                             </div>

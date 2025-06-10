@@ -1,6 +1,7 @@
 <?php
 namespace App\Http\Controllers;
 
+use App\Models\City;
 use App\Models\Hotel;
 use App\Models\Room;
 use Illuminate\Contracts\View\Factory;
@@ -23,8 +24,15 @@ class ShowHotelController extends Controller
                 }
             });
         }
+
+        // --- إضافة فلترة بالمدينة هنا ---
+        if (request()->filled('city_id')) { // افترض إن الـ parameter اللي جاي هو 'city_id'
+            $query->where('city_id', request('city_id'));
+        }
+
+        $cities = City::query()->with('hotels')->get();
         $hotels = $query->get();
-        return view('user.index', compact('hotels'));
+        return view('user.index', compact('hotels', 'cities'));
 
     }
 

@@ -7,6 +7,7 @@ use App\Http\Controllers\CityController;
 use App\Http\Controllers\CompleteReservationController;
 use App\Http\Controllers\ContactUsController;
 use App\Http\Controllers\DetailRoomController;
+use App\Http\Controllers\FilterController;
 use App\Http\Controllers\HotelController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RoomController;
@@ -55,5 +56,7 @@ Route::get('details-hotel/{id}', [ShowHotelController::class, 'show'])->name('de
 Route::get('details-room/{id}', [DetailRoomController::class, 'show'])->name('details.room');
 
 Route::post('complete-booking', [CompleteReservationController::class, 'store'])->name('complete.booking');
+
+Route::post('filter', [ShowHotelController::class, 'index'])->name('filter');
 
 require __DIR__ . '/auth.php';
