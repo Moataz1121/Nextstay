@@ -23,7 +23,8 @@ class UpdateCityRequest extends FormRequest
     {
         return [
             //
-            'name' => 'sometimes|required|max:50'
+            'name' => 'sometimes|required|max:50',
+            'image' => 'sometimes|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ];
     }
 }

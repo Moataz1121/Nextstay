@@ -71,6 +71,11 @@ class CityController extends Controller
         //
         $data = $request->validated();
         $city->update($data);
+        if ($request->hasFile('image')) {
+            $city->clearMediaCollection('city_images');
+            $city->addMediaFromRequest('image')->toMediaCollection('city_images');
+        }
+
         return redirect()->route('admin.city.index')->with('success', 'City Updated Successfully');
     }
 

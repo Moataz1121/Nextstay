@@ -277,10 +277,10 @@
             <br>
             <form method="GET" action="{{ route('index') }}" class="filter-form">
                 <label for="price_from">Price From:</label>
-                <input type="number" id="price_from" name="price_from" min="0" placeholder="مثلا 100">
+                <input type="number" id="price_from" name="price_from" min="0" placeholder="like 100">
 
                 <label for="price_to">Price To:</label>
-                <input type="number" id="price_to" name="price_to" min="0" placeholder="مثلا 500">
+                <input type="number" id="price_to" name="price_to" min="0" placeholder="like 500">
 
                 <button type="submit" style="display: flex; justify-content: flex-start;">Search</button>
             </form>
