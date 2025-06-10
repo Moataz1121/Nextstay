@@ -64,8 +64,8 @@
                         <div class="cs_hero_text">
                             <p
                                 class="cs_hero_subtitle cs_white_color text-uppercase d-inline-flex position-relative cs_mb_25 cs_letter_spacing_1">
-                                <img class="cs_hero_subtitle_icon_1  start-0"
-                                    src="{{ asset('assets') }}/img/1page_heading_bg_rooms.jpeg" alt="Star">
+                                {{-- <img class="cs_hero_subtitle_icon_1  start-0"
+                                    src="{{ asset('assets') }}/img/1page_heading_bg_rooms.jpeg" alt="Star"> --}}
                                 Your dream stay is just a click away
                                 {{-- <img class="cs_hero_subtitle_icon_2 position-absolute end-0" src="assets/img/icons/star.svg" alt="Star"> --}}
                             </p>
@@ -272,7 +272,6 @@
                 background-color: #2980b9;
             }
         </style>
-
         <div style="display: flex; justify-content: flex-end;">
             <br>
             <form method="GET" action="{{ route('index') }}" class="filter-form">
@@ -284,7 +283,6 @@
 
                 <button type="submit" style="display: flex; justify-content: flex-start;">Search</button>
             </form>
-
         </div>
 
         <div class="cs_height_80 cs_height_lg_50"></div>
@@ -323,7 +321,7 @@
                         </h2>
                         @foreach ($hotel->roomTypes as $type)
                           <div class="cs_card_price cs_mb_17">
-                            <span class="cs_primary_color">From</span>
+                            <span class="cs_primary_color">{{ $type->name }}</span>
                             <span class="cs_accent_color cs_fs_38 cs_primary_font">
                               EGP {{ $type->price ?? '' }}/Night
                             </span>
